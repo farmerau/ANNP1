@@ -82,6 +82,7 @@ double* ann::prepareForSigmoid(){
 
 void ann::sigmoid(double* temp){
   for (int i = 0; i < numOut; i++){
+    cout << "Setting " << i << "th individual to " << (1/(1+exp(-temp[i]))) << "\n";
     outputs[i].setVal(1/(1+exp(-temp[i])));
   }
 }
@@ -92,7 +93,7 @@ void ann::append(){
       outputBuffer = outputBuffer + " ";
     }
     stringstream temp;
-    temp << numOut;
+    temp << outputs[i].getVal();
     outputBuffer = outputBuffer + temp.str();
   }
   outputBuffer = outputBuffer + "\n";
